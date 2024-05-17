@@ -1,0 +1,46 @@
+{
+    "name": "jhonhuanuco-dev/security-pe",
+    "description": "Security-pe proporciona un sistema de autenticación y seguridad para APIs simples.",
+    "keywords": ["security.pe", "auth"],
+    "license": "MIT",
+    "type": "library",
+    "homepage": "https://github.com/jhonHuanuco-dev/security-pe",
+    "authors": [
+        {
+            "name": "Jhon Huanuco",
+            "email": "jhon.huanuco@outlook.com",
+            "homepage": "https://github.com/jhonHuanuco-dev/security-pe",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0",
+        "illuminate/database": "^10.0",
+        "illuminate/http": "^10.0",
+        "illuminate/support": "^10.0",
+        "laravel/framework": ">=10.48",
+        "laravel/sanctum": "^3.2",
+        "symfony/http-foundation": "^6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jhonhdev\\SecurityPe\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Jhonhdev\\SecurityPe\\SecurityPeServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
