@@ -5,6 +5,7 @@ namespace Jhonhdev\SecurityPe\Models\Schemas\Security;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Activity extends Model
 {
@@ -13,6 +14,7 @@ class Activity extends Model
     protected $connection;
     protected $table;
     protected $guard_name = 'api';
+    public $timestamps = false;
 
     public function __construct() {
         $this->connection = config('securitype.connection');
@@ -35,7 +37,6 @@ class Activity extends Model
         'method',
         'ip_address',
         'created_at',
-        'updated_at',
     ];
 
     protected static function booted(): void {
@@ -44,5 +45,9 @@ class Activity extends Model
 
     public function prunable(): Builder {
         return static::where('created_at', '<=', now()->subDays(7));
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(Users::class, 'id');
     }
 }

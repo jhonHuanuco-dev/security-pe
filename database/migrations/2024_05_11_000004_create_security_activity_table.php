@@ -11,18 +11,22 @@ return new class extends Migration
     {
         $connection = config('securitype.connection');
         $table_name = config('securitype.models.activity.name');
+        $table_name_users = config('securitype.models.users.name');
+
         if (empty($connection)) {
             throw new ConfigurationDisabledException;
         }
 
-        Schema::connection($connection)->create($table_name, function (Blueprint $table) {
+        Schema::connection($connection)->create($table_name, function (Blueprint $table) use ($table_name_users) {
             $table->id();
-            $table->integer('user_id')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->string('url');
             $table->text('user_agent')->nullable();
             $table->string('method');
             $table->string('ip_address');
             $table->timestamp('created_at', 0)->nullable();
+
+            $table->foreign('user_id', 'FK__SA_UII')->references('id')->on($table_name_users);
         });
     }
 

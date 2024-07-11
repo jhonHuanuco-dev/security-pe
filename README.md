@@ -61,9 +61,20 @@ return [
 ];
 ```
 
-7. Update your configuration file `config/securitype.php` according to your needs before running the migrations..
+7. Register the middleware of `ActivityUserRequest` in the `App\Http\Kernel.php`.:
 
-8. Execute the following command to run the migrations:
+```php
+protected $middleware = [
+
+  //...
+  \Jhonhdev\SecurityPe\Http\Middleware\ActivityUserRequest::class,
+
+];
+```
+
+8. Update your configuration file `config/securitype.php` according to your needs before running the migrations..
+
+9. Execute the following command to run the migrations:
 
 ```bash
   php artisan migrate

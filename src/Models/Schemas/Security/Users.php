@@ -5,6 +5,8 @@ namespace Jhonhdev\SecurityPe\Models\Schemas\Security;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Jhonhdev\SecurityPe\Traits\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Users extends Authenticatable
 {
@@ -48,4 +50,12 @@ class Users extends Authenticatable
         'password' => 'hashed',
         'state' => 'bool',
     ];
+
+    public function activitys(): HasMany {
+        return $this->hasMany(Activity::class, 'user_id');
+    }
+
+    public function branche(): BelongsTo {
+        return $this->belongsTo(Branches::class, 'id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace Jhonhdev\SecurityPe\Models\Schemas\Security;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Branches extends Model 
 {
@@ -34,4 +35,8 @@ class Branches extends Model
     protected $casts = [
         'state' => 'bool',
     ];
+
+    public function users(): HasMany {
+        return $this->hasMany(Users::class, 'branch_id');
+    }
 }
