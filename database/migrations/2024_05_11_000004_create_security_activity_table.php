@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->string('method');
             $table->string('ip_address');
-            $table->timestamp('created_at', 0)->nullable();
+            $table->timestamp('created_at', 0)->useCurrent();
 
             $table->foreign('user_id', 'FK__SA_UII')->references('id')->on($table_name_users);
         });
