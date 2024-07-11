@@ -23,6 +23,7 @@ class ActivityUserRequest
                     'user_agent' => $request->header('User-Agent'),
                     'method' => $request->method(),
                     'ip_address' => $ip_address,
+                    'created_at' => now()
                 ]);
             }
         }
