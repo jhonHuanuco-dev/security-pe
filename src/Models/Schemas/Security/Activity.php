@@ -27,6 +27,7 @@ class Activity extends Model
         'user_agent',
         'method',
         'ip_address',
+        'created_at',
     ];
 
     protected $hidden = [
